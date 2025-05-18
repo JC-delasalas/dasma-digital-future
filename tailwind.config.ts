@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,8 +62,54 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // Government colors
+        gov: {
+          green: {
+            DEFAULT: '#00573F',
+            50: '#E6F7EC',
+            100: '#C3E9D0',
+            200: '#9CD9B3',
+            300: '#75C895',
+            400: '#4DB877',
+            500: '#35A15C',
+            600: '#2A8F51',
+            700: '#207946',
+            800: '#146339',
+            900: '#0A4E2E',
+          },
+          yellow: {
+            DEFAULT: '#FFB400',
+            50: '#FFF6E5',
+            100: '#FFECC6',
+            200: '#FFDF94',
+            300: '#FFD261',
+            400: '#FFC52F',
+            500: '#FFB400',
+            600: '#CC9000',
+            700: '#996C00',
+            800: '#664800',
+            900: '#332400',
+          },
+          neutrals: {
+            white: '#FFFFFF',
+            gray50: '#F9FAFB',
+            gray100: '#F3F4F6',
+            gray200: '#E5E7EB',
+            gray300: '#D1D5DB',
+            gray400: '#9CA3AF',
+            gray500: '#6B7280',
+            gray600: '#4B5563',
+            gray700: '#374151',
+            gray800: '#1F2937',
+            gray900: '#111827',
+            black: '#000000',
+          }
+        }
 			},
+      fontFamily: {
+        sans: ['Open Sans', 'system-ui', 'sans-serif'],
+      },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -84,11 +131,26 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
+        'fade-out': {
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(10px)' }
+        },
+        'pulse-subtle': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.85' }
+        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.4s ease-out',
+        'fade-out': 'fade-out 0.4s ease-out',
+        'pulse-subtle': 'pulse-subtle 2s infinite ease-in-out'
 			}
 		}
 	},
