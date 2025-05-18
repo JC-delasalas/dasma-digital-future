@@ -9,12 +9,16 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const [isSeniorMode, setIsSeniorMode] = useState(false);
+  const [isSpeechActive, setIsSpeechActive] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSidebarItem, setActiveSidebarItem] = useState('overview');
 
   const toggleSeniorMode = () => {
     setIsSeniorMode(!isSeniorMode);
     document.body.classList.toggle('senior-mode', !isSeniorMode);
+  };
+
+  const toggleSpeech = () => {
+    setIsSpeechActive(!isSpeechActive);
   };
 
   const toggleMobileMenu = () => {
@@ -25,7 +29,9 @@ const Dashboard = () => {
     <div className={isSeniorMode ? 'senior-mode' : ''}>
       <Header 
         isSeniorMode={isSeniorMode} 
-        toggleSeniorMode={toggleSeniorMode} 
+        toggleSeniorMode={toggleSeniorMode}
+        isSpeechActive={isSpeechActive}
+        toggleSpeech={toggleSpeech}
         toggleMobileMenu={toggleMobileMenu} 
       />
       

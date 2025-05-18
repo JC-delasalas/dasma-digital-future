@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { VolumeUp, Users, Bot } from 'lucide-react';
+import { Volume, Users, Bot } from 'lucide-react';
 
 interface AccessibilityFeaturesProps {
   isSeniorMode: boolean;
@@ -42,7 +41,7 @@ const AccessibilityFeatures: React.FC<AccessibilityFeaturesProps> = ({ isSeniorM
           
           <div className="feature-card">
             <div className="bg-gov-yellow-50 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-              <VolumeUp className="h-6 w-6 text-gov-yellow-700" />
+              <Volume className="h-6 w-6 text-gov-yellow-700" />
             </div>
             <h3 className={`font-semibold text-gov-neutrals-gray900 mb-3 ${isSeniorMode ? 'text-2xl' : 'text-xl'}`}>
               Text-to-Speech
