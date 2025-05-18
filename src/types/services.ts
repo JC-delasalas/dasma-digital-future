@@ -18,7 +18,7 @@ export interface ServiceRequirement {
 export interface ProcessStep {
   title: string;
   description: string;
-  mode: 'online' | 'in-person';
+  mode: 'online' | 'in-person' | 'hybrid';
   isCompletion?: boolean;
   estimatedDuration?: string;
   tagalog?: string;

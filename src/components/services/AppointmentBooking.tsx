@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Calendar as CalendarIcon, Clock, MapPin, User, Calendar, Users } from 'lucide-react';
+import { Calendar as CalendarIcon, Clock, MapPin, User, Users } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -238,7 +238,7 @@ const AppointmentBooking: React.FC<AppointmentBookingProps> = ({ service, isSeni
           <div className="bg-gov-neutrals-gray50 p-4 rounded-lg">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <div>
-                <Calendar className="h-10 w-10 text-gov-green" />
+                <CalendarIcon className="h-10 w-10 text-gov-green" />
               </div>
               
               <div className="flex-1">
