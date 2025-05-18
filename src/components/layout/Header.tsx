@@ -3,15 +3,24 @@ import React from 'react';
 import { Bell, Calendar, Home, Menu, Search, Settings, User } from "lucide-react";
 import { Link } from 'react-router-dom';
 import SeniorModeToggle from '../accessibility/SeniorModeToggle';
+import TextToSpeech from '../accessibility/TextToSpeech';
 import { Button } from '@/components/ui/button';
 
 interface HeaderProps {
   isSeniorMode: boolean;
   toggleSeniorMode: () => void;
+  isSpeechActive: boolean;
+  toggleSpeech: () => void;
   toggleMobileMenu: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ isSeniorMode, toggleSeniorMode, toggleMobileMenu }) => {
+const Header: React.FC<HeaderProps> = ({ 
+  isSeniorMode, 
+  toggleSeniorMode, 
+  isSpeechActive, 
+  toggleSpeech, 
+  toggleMobileMenu 
+}) => {
   return (
     <header className="bg-white border-b border-gov-neutrals-gray200 shadow-sm sticky top-0 z-50 transition-all">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,6 +65,7 @@ const Header: React.FC<HeaderProps> = ({ isSeniorMode, toggleSeniorMode, toggleM
           {/* Right Side Actions */}
           <div className="flex items-center space-x-2">
             <SeniorModeToggle isSeniorMode={isSeniorMode} toggleSeniorMode={toggleSeniorMode} />
+            <TextToSpeech isSeniorMode={isSeniorMode} isSpeechActive={isSpeechActive} toggleSpeech={toggleSpeech} />
             <div className="hidden md:flex items-center space-x-2">
               <Button variant="ghost" size="icon" className="rounded-full hover:bg-gov-neutrals-gray100">
                 <Bell size={20} className="text-gov-neutrals-gray700" />

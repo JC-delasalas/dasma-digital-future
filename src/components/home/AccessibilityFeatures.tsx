@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { VolumeUp, Users, Bot } from 'lucide-react';
 
 interface AccessibilityFeaturesProps {
   isSeniorMode: boolean;
@@ -26,9 +27,7 @@ const AccessibilityFeatures: React.FC<AccessibilityFeaturesProps> = ({ isSeniorM
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="feature-card">
             <div className="bg-gov-yellow-50 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gov-yellow-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-              </svg>
+              <Users className="h-6 w-6 text-gov-yellow-700" />
             </div>
             <h3 className={`font-semibold text-gov-neutrals-gray900 mb-3 ${isSeniorMode ? 'text-2xl' : 'text-xl'}`}>
               Senior Mode
@@ -43,15 +42,13 @@ const AccessibilityFeatures: React.FC<AccessibilityFeaturesProps> = ({ isSeniorM
           
           <div className="feature-card">
             <div className="bg-gov-yellow-50 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gov-yellow-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-              </svg>
+              <VolumeUp className="h-6 w-6 text-gov-yellow-700" />
             </div>
             <h3 className={`font-semibold text-gov-neutrals-gray900 mb-3 ${isSeniorMode ? 'text-2xl' : 'text-xl'}`}>
               Text-to-Speech
             </h3>
             <p className={`text-gov-neutrals-gray600 mb-4 ${isSeniorMode ? 'text-lg' : 'text-base'}`}>
-              Have content read aloud with our built-in screen reader technology, available in both English and Tagalog.
+              Simply select any text on the page and let our text-to-speech technology read it aloud in either English or Filipino.
             </p>
             <Button variant="outline" size={isSeniorMode ? "lg" : "default"} className="border-gov-green text-gov-green hover:bg-gov-green-50">
               Learn More
@@ -60,9 +57,7 @@ const AccessibilityFeatures: React.FC<AccessibilityFeaturesProps> = ({ isSeniorM
           
           <div className="feature-card">
             <div className="bg-gov-yellow-50 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gov-yellow-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-              </svg>
+              <Bot className="h-6 w-6 text-gov-yellow-700" />
             </div>
             <h3 className={`font-semibold text-gov-neutrals-gray900 mb-3 ${isSeniorMode ? 'text-2xl' : 'text-xl'}`}>
               AI Assistance

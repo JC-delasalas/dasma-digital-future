@@ -12,11 +12,16 @@ import CallToAction from '../components/home/CallToAction';
 
 const Index = () => {
   const [isSeniorMode, setIsSeniorMode] = useState(false);
+  const [isSpeechActive, setIsSpeechActive] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleSeniorMode = () => {
     setIsSeniorMode(!isSeniorMode);
     document.body.classList.toggle('senior-mode', !isSeniorMode);
+  };
+
+  const toggleSpeech = () => {
+    setIsSpeechActive(!isSpeechActive);
   };
 
   const toggleMobileMenu = () => {
@@ -27,7 +32,9 @@ const Index = () => {
     <div className={isSeniorMode ? 'senior-mode' : ''}>
       <Header 
         isSeniorMode={isSeniorMode} 
-        toggleSeniorMode={toggleSeniorMode} 
+        toggleSeniorMode={toggleSeniorMode}
+        isSpeechActive={isSpeechActive}
+        toggleSpeech={toggleSpeech}
         toggleMobileMenu={toggleMobileMenu} 
       />
       
