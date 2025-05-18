@@ -13,25 +13,25 @@ const ServiceHighlights: React.FC<ServiceHighlightsProps> = ({ isSeniorMode }) =
       title: 'Document Requests',
       description: 'Apply for birth certificates, business permits, and other official documents online.',
       icon: <FileText size={isSeniorMode ? 32 : 24} />,
-      link: '/services/documents'
+      link: '/services/civil-registration/birth-certificate'
     },
     {
       title: 'Schedule Appointments',
       description: 'Book appointments with city departments and avoid waiting in line.',
       icon: <Calendar size={isSeniorMode ? 32 : 24} />,
-      link: '/services/appointments'
+      link: '/services'
     },
     {
       title: 'Report Issues',
       description: 'Report neighborhood issues like potholes, flooding, or street light outages.',
       icon: <MessageSquare size={isSeniorMode ? 32 : 24} />,
-      link: '/services/report'
+      link: '/services'
     },
     {
       title: 'City Map',
       description: 'Explore interactive city maps showing public facilities and services.',
       icon: <MapPin size={isSeniorMode ? 32 : 24} />,
-      link: '/services/map'
+      link: '/services'
     }
   ];
 
