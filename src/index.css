@@ -128,7 +128,7 @@
 
   /* Higher contrast in senior mode */
   .senior-mode .contrast {
-    @apply text-gov-gray900 bg-gov-neutrals-white;
+    @apply text-gov-neutrals-gray900 bg-gov-neutrals-white;
   }
 }
 
