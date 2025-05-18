@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
@@ -11,6 +10,7 @@ const Dashboard = () => {
   const [isSeniorMode, setIsSeniorMode] = useState(false);
   const [isSpeechActive, setIsSpeechActive] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSidebarItem, setActiveSidebarItem] = useState('overview');
 
   const toggleSeniorMode = () => {
     setIsSeniorMode(!isSeniorMode);
