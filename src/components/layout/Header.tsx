@@ -23,39 +23,39 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <header className="bg-white border-b border-gov-neutrals-gray200 shadow-sm sticky top-0 z-50 transition-all">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
+        <div className="flex justify-between items-center py-3 sm:py-4">
+          <div className="flex items-center min-w-0">
             <Link to="/" className="flex items-center">
-              <div className="h-10 w-10 bg-gov-green rounded-lg flex items-center justify-center">
-                <Home className="text-white" size={20} />
+              <div className="h-8 w-8 sm:h-10 sm:w-10 bg-gov-green rounded-lg flex items-center justify-center">
+                <Home className="text-white" size={isSeniorMode ? 20 : 16} />
               </div>
-              <span className={`ml-2 font-semibold text-gov-green hidden md:inline ${isSeniorMode ? 'text-xl' : 'text-base'}`}>
+              <span className={`ml-2 font-semibold text-gov-green hidden sm:inline truncate ${isSeniorMode ? 'text-lg xl:text-xl' : 'text-sm xl:text-base'}`}>
                 City of Dasmariñas
               </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            <nav className={`mx-4 ${isSeniorMode ? 'text-lg' : 'text-base'}`}>
+          <div className="hidden lg:flex items-center space-x-1">
+            <nav className={`mx-4 ${isSeniorMode ? 'text-base xl:text-lg' : 'text-sm xl:text-base'}`}>
               <ul className="flex space-x-1">
                 <li>
-                  <Link to="/services" className="px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
-                    <Calendar size={isSeniorMode ? 24 : 18} className="mr-2" />
-                    <span>Services</span>
+                  <Link to="/services" className="px-2 xl:px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
+                    <Calendar size={isSeniorMode ? 20 : 16} className="mr-1 xl:mr-2" />
+                    <span className="hidden xl:inline">Services</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/transparency" className="px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
-                    <Search size={isSeniorMode ? 24 : 18} className="mr-2" />
-                    <span>Transparency</span>
+                  <Link to="/transparency" className="px-2 xl:px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
+                    <Search size={isSeniorMode ? 20 : 16} className="mr-1 xl:mr-2" />
+                    <span className="hidden xl:inline">Transparency</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard" className="px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
-                    <User size={isSeniorMode ? 24 : 18} className="mr-2" />
-                    <span>My Dashboard</span>
+                  <Link to="/dashboard" className="px-2 xl:px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
+                    <User size={isSeniorMode ? 20 : 16} className="mr-1 xl:mr-2" />
+                    <span className="hidden xl:inline">Dashboard</span>
                   </Link>
                 </li>
               </ul>
@@ -63,24 +63,26 @@ const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Right Side Actions */}
-          <div className="flex items-center space-x-2">
-            <SeniorModeToggle isSeniorMode={isSeniorMode} toggleSeniorMode={toggleSeniorMode} />
-            <TextToSpeech isSeniorMode={isSeniorMode} isSpeechActive={isSpeechActive} toggleSpeech={toggleSpeech} />
-            <div className="hidden md:flex items-center space-x-2">
+          <div className="flex items-center space-x-1 sm:space-x-2">
+            <div className="hidden sm:flex items-center space-x-1">
+              <SeniorModeToggle isSeniorMode={isSeniorMode} toggleSeniorMode={toggleSeniorMode} />
+              <TextToSpeech isSeniorMode={isSeniorMode} isSpeechActive={isSpeechActive} toggleSpeech={toggleSpeech} />
+            </div>
+            <div className="hidden md:flex items-center space-x-1">
               <Button variant="ghost" size="icon" className="rounded-full hover:bg-gov-neutrals-gray100">
-                <Bell size={20} className="text-gov-neutrals-gray700" />
+                <Bell size={18} className="text-gov-neutrals-gray700" />
               </Button>
               <Button variant="ghost" size="icon" className="rounded-full hover:bg-gov-neutrals-gray100">
-                <Settings size={20} className="text-gov-neutrals-gray700" />
+                <Settings size={18} className="text-gov-neutrals-gray700" />
               </Button>
             </div>
             <Button 
               variant="ghost" 
               size="icon" 
-              className="md:hidden rounded-full hover:bg-gov-neutrals-gray100"
+              className="lg:hidden rounded-full hover:bg-gov-neutrals-gray100"
               onClick={toggleMobileMenu}
             >
-              <Menu size={24} className="text-gov-neutrals-gray700" />
+              <Menu size={20} className="text-gov-neutrals-gray700" />
             </Button>
           </div>
         </div>

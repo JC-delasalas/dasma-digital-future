@@ -27,6 +27,18 @@ const faqs = [
   {
     question: "How can I request budget information?",
     answer: "You can search for specific budget items using our search tool above, download reports in CSV/PDF format, or contact the City Treasury Office for detailed information requests."
+  },
+  {
+    question: "How do I book an appointment for city services?",
+    answer: "You can book appointments through our Services section. Select the service you need, choose an available time slot, and receive a confirmation with all the required documents listed."
+  },
+  {
+    question: "What services are available online?",
+    answer: "Many services are available online including permit applications, bill payments, document requests, and appointment bookings. Visit our Services page to see the full list of digital services."
+  },
+  {
+    question: "How can I contact city offices?",
+    answer: "You can contact city offices through our directory in the Services section, call our main hotline at (046) 416-5252, or visit offices during business hours Monday to Friday 8AM-5PM."
   }
 ];
 
@@ -35,7 +47,7 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ isSeniorMode }) => {
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      text: 'Hello! I\'m your budget transparency assistant. I can help you understand our city\'s budget and answer questions about our projects. How can I assist you today?'
+      text: 'Hello! I\'m your city assistant. I can help you with budget information, city services, and answer questions about our projects. How can I assist you today?'
     }
   ]);
   const [inputText, setInputText] = useState('');
@@ -47,7 +59,10 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ isSeniorMode }) => {
       // Simple FAQ matching
       const matchedFaq = faqs.find(faq => 
         faq.question.toLowerCase().includes(inputText.toLowerCase()) ||
-        inputText.toLowerCase().includes(faq.question.toLowerCase().split(' ')[0])
+        inputText.toLowerCase().includes(faq.question.toLowerCase().split(' ')[0]) ||
+        inputText.toLowerCase().includes('service') && faq.question.toLowerCase().includes('service') ||
+        inputText.toLowerCase().includes('appointment') && faq.question.toLowerCase().includes('appointment') ||
+        inputText.toLowerCase().includes('contact') && faq.question.toLowerCase().includes('contact')
       );
       
       setTimeout(() => {
@@ -76,50 +91,53 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ isSeniorMode }) => {
   return (
     <>
       {/* Chat Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
         <Button
           onClick={() => setIsOpen(!isOpen)}
           className={`rounded-full shadow-lg transition-all duration-300 ${
             isOpen ? 'bg-red-500 hover:bg-red-600' : 'bg-gov-green hover:bg-gov-green-700'
-          } ${isSeniorMode ? 'w-16 h-16' : 'w-14 h-14'}`}
+          } ${isSeniorMode ? 'w-16 h-16' : 'w-12 h-12 sm:w-14 sm:h-14'}`}
         >
           {isOpen ? (
-            <X className={isSeniorMode ? 'h-8 w-8' : 'h-6 w-6'} />
+            <X className={isSeniorMode ? 'h-8 w-8' : 'h-5 w-5 sm:h-6 sm:w-6'} />
           ) : (
-            <MessageCircle className={isSeniorMode ? 'h-8 w-8' : 'h-6 w-6'} />
+            <MessageCircle className={isSeniorMode ? 'h-8 w-8' : 'h-5 w-5 sm:h-6 sm:w-6'} />
           )}
         </Button>
       </div>
 
       {/* Chat Window */}
       {isOpen && (
-        <div className={`fixed bottom-24 right-6 bg-white rounded-lg shadow-xl border border-gray-200 z-40 transition-all duration-300 ${
-          isSeniorMode ? 'w-96 h-[500px]' : 'w-80 h-96'
-        }`}>
+        <div className={`fixed bottom-16 right-4 sm:bottom-24 sm:right-6 bg-white rounded-lg shadow-xl border border-gray-200 z-40 transition-all duration-300 ${
+          isSeniorMode 
+            ? 'w-[calc(100vw-2rem)] sm:w-96 h-[70vh] sm:h-[500px]' 
+            : 'w-[calc(100vw-2rem)] sm:w-80 h-[60vh] sm:h-96'
+        } max-h-[80vh]`}
+        >
           {/* Header */}
-          <div className="bg-gov-green text-white p-4 rounded-t-lg">
-            <h3 className={`font-semibold ${isSeniorMode ? 'text-lg' : 'text-base'}`}>
-              Budget Assistant
+          <div className="bg-gov-green text-white p-3 sm:p-4 rounded-t-lg">
+            <h3 className={`font-semibold ${isSeniorMode ? 'text-lg sm:text-xl' : 'text-sm sm:text-base'}`}>
+              City Assistant
             </h3>
-            <p className={`${isSeniorMode ? 'text-base' : 'text-sm'} opacity-90`}>
-              Ask me about city budget and projects
+            <p className={`${isSeniorMode ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'} opacity-90`}>
+              Ask me about budget, services, and projects
             </p>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 p-4 overflow-y-auto max-h-60">
-            <div className="space-y-3">
+          <div className="flex-1 p-3 sm:p-4 overflow-y-auto" style={{ maxHeight: 'calc(100% - 200px)' }}>
+            <div className="space-y-2 sm:space-y-3">
               {messages.map((message, index) => (
                 <div
                   key={index}
                   className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-xs p-3 rounded-lg ${
+                    className={`max-w-[85%] p-2 sm:p-3 rounded-lg ${
                       message.type === 'user'
                         ? 'bg-gov-green text-white'
                         : 'bg-gray-100 text-gray-800'
-                    } ${isSeniorMode ? 'text-base' : 'text-sm'}`}
+                    } ${isSeniorMode ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}
                   >
                     {message.text}
                   </div>
@@ -129,19 +147,19 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ isSeniorMode }) => {
           </div>
 
           {/* FAQs Section */}
-          <div className="border-t p-3">
-            <h4 className={`font-medium text-gray-700 mb-2 ${isSeniorMode ? 'text-base' : 'text-sm'}`}>
-              <HelpCircle className="inline h-4 w-4 mr-1" />
-              Common Questions:
+          <div className="border-t p-2 sm:p-3">
+            <h4 className={`font-medium text-gray-700 mb-2 ${isSeniorMode ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
+              <HelpCircle className="inline h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+              Quick Questions:
             </h4>
-            <div className="space-y-1 max-h-20 overflow-y-auto">
-              {faqs.slice(0, 3).map((faq, index) => (
+            <div className="space-y-1 max-h-16 sm:max-h-20 overflow-y-auto">
+              {faqs.slice(0, 4).map((faq, index) => (
                 <button
                   key={index}
                   onClick={() => handleFaqClick(faq)}
-                  className={`text-left w-full p-2 hover:bg-gray-50 rounded text-gov-green hover:text-gov-green-700 transition-colors ${
-                    isSeniorMode ? 'text-sm' : 'text-xs'
-                  }`}
+                  className={`text-left w-full p-1 sm:p-2 hover:bg-gray-50 rounded text-gov-green hover:text-gov-green-700 transition-colors ${
+                    isSeniorMode ? 'text-xs sm:text-sm' : 'text-xs'
+                  } truncate`}
                 >
                   {faq.question}
                 </button>
@@ -150,24 +168,24 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ isSeniorMode }) => {
           </div>
 
           {/* Input */}
-          <div className="border-t p-3">
+          <div className="border-t p-2 sm:p-3">
             <div className="flex space-x-2">
               <input
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder="Ask about budget or projects..."
-                className={`flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gov-green ${
-                  isSeniorMode ? 'text-base' : 'text-sm'
+                placeholder="Ask about budget, services..."
+                className={`flex-1 border border-gray-300 rounded-lg px-2 sm:px-3 py-1 sm:py-2 focus:outline-none focus:ring-2 focus:ring-gov-green ${
+                  isSeniorMode ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'
                 }`}
               />
               <Button
                 onClick={handleSendMessage}
                 size="sm"
-                className="bg-gov-green hover:bg-gov-green-700"
+                className="bg-gov-green hover:bg-gov-green-700 px-2 sm:px-3"
               >
-                <Send className="h-4 w-4" />
+                <Send className="h-3 w-3 sm:h-4 sm:w-4" />
               </Button>
             </div>
           </div>

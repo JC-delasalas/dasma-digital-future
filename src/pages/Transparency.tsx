@@ -7,7 +7,6 @@ import TransparencyHero from '../components/transparency/TransparencyHero';
 import BudgetSection from '../components/transparency/BudgetSection';
 import ProjectMonitoring from '../components/transparency/ProjectMonitoring';
 import CityCouncilSection from '../components/transparency/CityCouncilSection';
-import ChatAssistant from '../components/transparency/ChatAssistant';
 
 const Transparency = () => {
   const [isSeniorMode, setIsSeniorMode] = useState(false);
@@ -51,7 +50,6 @@ const Transparency = () => {
       </main>
       
       <Footer isSeniorMode={isSeniorMode} />
-      <ChatAssistant isSeniorMode={isSeniorMode} />
     </div>
   );
 };
