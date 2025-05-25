@@ -50,6 +50,27 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({ isSeniorMode 
     return null;
   };
 
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, name }: any) => {
+    const RADIAN = Math.PI / 180;
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text 
+        x={x} 
+        y={y} 
+        fill="white" 
+        textAnchor={x > cx ? 'start' : 'end'} 
+        dominantBaseline="central"
+        fontSize={isSeniorMode ? 14 : 12}
+        fontWeight="bold"
+      >
+        {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
+  };
+
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm border border-gov-neutrals-gray200">
       <div className="flex justify-between items-center mb-6">
@@ -69,61 +90,70 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({ isSeniorMode 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Pie Chart */}
         <div className="space-y-4">
-          <h4 className={`font-medium text-gov-neutrals-gray800 ${isSeniorMode ? 'text-xl' : 'text-lg'}`}>
+          <h4 className={`font-medium text-gov-neutrals-gray800 text-center ${isSeniorMode ? 'text-xl' : 'text-lg'}`}>
             Budget Distribution
           </h4>
-          <ChartContainer config={chartConfig} className="h-80">
+          <div className="h-80 flex items-center justify-center">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
                   data={budgetData}
                   cx="50%"
                   cy="50%"
-                  outerRadius={100}
+                  labelLine={false}
+                  label={renderCustomizedLabel}
+                  outerRadius={120}
                   fill="#8884d8"
                   dataKey="value"
-                  label={({ name, value }) => `${name}: ${value}%`}
-                  labelLine={false}
                 >
                   {budgetData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <ChartTooltip content={<CustomTooltip />} />
+                <Tooltip content={<CustomTooltip />} />
               </PieChart>
             </ResponsiveContainer>
-          </ChartContainer>
+          </div>
         </div>
 
         {/* Bar Chart */}
         <div className="space-y-4">
-          <h4 className={`font-medium text-gov-neutrals-gray800 ${isSeniorMode ? 'text-xl' : 'text-lg'}`}>
+          <h4 className={`font-medium text-gov-neutrals-gray800 text-center ${isSeniorMode ? 'text-xl' : 'text-lg'}`}>
             Budget Amount by Sector
           </h4>
-          <ChartContainer config={chartConfig} className="h-80">
+          <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={budgetData}>
-                <CartesianGrid strokeDasharray="3 3" />
+              <BarChart 
+                data={budgetData}
+                margin={{
+                  top: 20,
+                  right: 30,
+                  left: 20,
+                  bottom: 80,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
                   fontSize={isSeniorMode ? 14 : 12}
+                  interval={0}
                 />
                 <YAxis 
                   tickFormatter={(value) => `₱${(value / 1000000000).toFixed(1)}B`}
                   fontSize={isSeniorMode ? 14 : 12}
                 />
                 <Tooltip content={<CustomTooltip />} />
-                <Bar dataKey="amount" fill="#00875A">
+                <Bar dataKey="amount" radius={[4, 4, 0, 0]}>
                   {budgetData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
-          </ChartContainer>
+          </div>
         </div>
       </div>
       
@@ -136,14 +166,14 @@ const BudgetVisualization: React.FC<BudgetVisualizationProps> = ({ isSeniorMode 
                 className="w-4 h-4 rounded-full mr-2" 
                 style={{ backgroundColor: item.color }}
               ></div>
-              <span className={`font-medium ${isSeniorMode ? 'text-base' : 'text-sm'}`}>
+              <span className={`font-medium text-center ${isSeniorMode ? 'text-base' : 'text-sm'}`}>
                 {item.name}
               </span>
             </div>
             <span className={`text-gray-600 font-semibold ${isSeniorMode ? 'text-lg' : 'text-base'}`}>
               {item.value}%
             </span>
-            <span className={`text-gray-500 ${isSeniorMode ? 'text-base' : 'text-xs'}`}>
+            <span className={`text-gray-500 text-center ${isSeniorMode ? 'text-base' : 'text-xs'}`}>
               {formatCurrency(item.amount)}
             </span>
           </div>
