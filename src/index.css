@@ -94,41 +94,91 @@
 
   body {
     @apply bg-background text-foreground;
+    transition: font-size 0.3s ease;
   }
 
-  /* Senior mode styles */
-  .senior-mode {
-    font-size: 1.25rem;
+  /* Senior mode styles - applied to body.senior-mode */
+  body.senior-mode {
+    font-size: 1.125rem !important;
   }
 
-  .senior-mode h1 {
-    @apply text-4xl md:text-5xl;
+  body.senior-mode h1 {
+    font-size: 2.5rem !important;
   }
 
-  .senior-mode h2 {
-    @apply text-3xl md:text-4xl;
+  body.senior-mode h2 {
+    font-size: 2rem !important;
   }
 
-  .senior-mode h3 {
-    @apply text-2xl md:text-3xl;
+  body.senior-mode h3 {
+    font-size: 1.75rem !important;
   }
 
-  .senior-mode p, .senior-mode a, .senior-mode li, .senior-mode label {
-    @apply text-xl;
+  body.senior-mode p, 
+  body.senior-mode a, 
+  body.senior-mode li, 
+  body.senior-mode label,
+  body.senior-mode span,
+  body.senior-mode div {
+    font-size: 1.25rem !important;
   }
 
-  .senior-mode button, .senior-mode .btn {
-    @apply text-xl py-3 px-6;
+  body.senior-mode button, 
+  body.senior-mode .btn {
+    font-size: 1.25rem !important;
+    padding: 0.875rem 1.5rem !important;
+    min-height: 3rem !important;
   }
 
-  /* Increase spacing in senior mode */
-  .senior-mode .spacing {
-    @apply my-8 space-y-6;
+  body.senior-mode .text-xs {
+    font-size: 1rem !important;
   }
 
-  /* Higher contrast in senior mode */
-  .senior-mode .contrast {
-    @apply text-gov-neutrals-gray900 bg-gov-neutrals-white;
+  body.senior-mode .text-sm {
+    font-size: 1.125rem !important;
+  }
+
+  body.senior-mode .text-base {
+    font-size: 1.25rem !important;
+  }
+
+  body.senior-mode .text-lg {
+    font-size: 1.5rem !important;
+  }
+
+  body.senior-mode .text-xl {
+    font-size: 1.75rem !important;
+  }
+
+  body.senior-mode .text-2xl {
+    font-size: 2rem !important;
+  }
+
+  body.senior-mode .text-3xl {
+    font-size: 2.5rem !important;
+  }
+
+  /* Increase spacing and contrast in senior mode */
+  body.senior-mode {
+    line-height: 1.8 !important;
+  }
+
+  body.senior-mode .space-y-2 > * + * {
+    margin-top: 1rem !important;
+  }
+
+  body.senior-mode .space-y-4 > * + * {
+    margin-top: 1.5rem !important;
+  }
+
+  body.senior-mode .space-y-6 > * + * {
+    margin-top: 2rem !important;
+  }
+
+  /* Higher contrast for better readability */
+  body.senior-mode {
+    --foreground: 0 0% 0%;
+    --background: 0 0% 100%;
   }
 }
 
