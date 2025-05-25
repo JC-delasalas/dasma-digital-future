@@ -1,8 +1,9 @@
-
 import React, { useState } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import MobileMenu from '../components/layout/MobileMenu';
+import BudgetVisualization from '../components/transparency/BudgetVisualization';
+import ChatAssistant from '../components/transparency/ChatAssistant';
 import { Button } from '@/components/ui/button';
 import { Search, Download, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -83,49 +84,8 @@ const Transparency = () => {
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="col-span-1 lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gov-neutrals-gray200">
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className={`font-semibold text-gov-neutrals-gray900 ${isSeniorMode ? 'text-2xl' : 'text-xl'}`}>
-                    2025 Budget Allocation by Sector
-                  </h3>
-                  <div className="flex space-x-2">
-                    <Button variant="outline" size="sm">
-                      <Download className="h-4 w-4 mr-1" /> CSV
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <Download className="h-4 w-4 mr-1" /> PDF
-                    </Button>
-                  </div>
-                </div>
-                
-                <div className="h-80 bg-gov-neutrals-gray100 rounded-lg flex items-center justify-center mb-4">
-                  <p className="text-gov-neutrals-gray600">
-                    Budget visualization chart will be displayed here
-                  </p>
-                </div>
-                
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-gov-green rounded-full mr-2"></div>
-                    <span className={`text-gov-neutrals-gray700 ${isSeniorMode ? 'text-base' : 'text-sm'}`}>Education (35%)</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-gov-yellow rounded-full mr-2"></div>
-                    <span className={`text-gov-neutrals-gray700 ${isSeniorMode ? 'text-base' : 'text-sm'}`}>Infrastructure (25%)</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-                    <span className={`text-gov-neutrals-gray700 ${isSeniorMode ? 'text-base' : 'text-sm'}`}>Healthcare (20%)</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
-                    <span className={`text-gov-neutrals-gray700 ${isSeniorMode ? 'text-base' : 'text-sm'}`}>Social Services (15%)</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-gray-500 rounded-full mr-2"></div>
-                    <span className={`text-gov-neutrals-gray700 ${isSeniorMode ? 'text-base' : 'text-sm'}`}>Administrative (5%)</span>
-                  </div>
-                </div>
+              <div className="col-span-1 lg:col-span-2">
+                <BudgetVisualization isSeniorMode={isSeniorMode} />
               </div>
               
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gov-neutrals-gray200">
@@ -458,6 +418,7 @@ const Transparency = () => {
       </main>
       
       <Footer isSeniorMode={isSeniorMode} />
+      <ChatAssistant isSeniorMode={isSeniorMode} />
     </div>
   );
 };
