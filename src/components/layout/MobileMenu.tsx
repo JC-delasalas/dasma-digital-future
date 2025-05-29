@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Bell, Calendar, Home, Search, Settings, User, X } from 'lucide-react';
+import { Bell, Calendar, Home, Search, Settings, User, X, FileText, Users, Phone, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SeniorModeToggle from '../accessibility/SeniorModeToggle';
 import TextToSpeech from '../accessibility/TextToSpeech';
@@ -17,7 +17,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isSeniorMode }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden animate-fade-in">
-      <div className="absolute right-0 top-0 h-full w-4/5 sm:w-3/4 max-w-sm bg-white shadow-lg">
+      <div className="absolute right-0 top-0 h-full w-4/5 sm:w-3/4 max-w-sm bg-white shadow-lg overflow-y-auto">
         <div className="p-4 flex justify-between items-center border-b border-gov-neutrals-gray200">
           <h2 className={`font-semibold ${isSeniorMode ? 'text-xl' : 'text-lg'}`}>Menu</h2>
           <Button variant="ghost" size="icon" onClick={onClose}>
@@ -36,7 +36,25 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isSeniorMode }
             <li>
               <Link to="/services" className="flex items-center p-3 hover:bg-gov-neutrals-gray100 rounded-lg" onClick={onClose}>
                 <Calendar size={isSeniorMode ? 24 : 20} className="mr-3 text-gov-green" />
-                <span>Services</span>
+                <span>E-Services</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/news" className="flex items-center p-3 hover:bg-gov-neutrals-gray100 rounded-lg" onClick={onClose}>
+                <FileText size={isSeniorMode ? 24 : 20} className="mr-3 text-gov-green" />
+                <span>News & Advisories</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/programs" className="flex items-center p-3 hover:bg-gov-neutrals-gray100 rounded-lg" onClick={onClose}>
+                <Users size={isSeniorMode ? 24 : 20} className="mr-3 text-gov-green" />
+                <span>Programs & Projects</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/directory" className="flex items-center p-3 hover:bg-gov-neutrals-gray100 rounded-lg" onClick={onClose}>
+                <Phone size={isSeniorMode ? 24 : 20} className="mr-3 text-gov-green" />
+                <span>Directory</span>
               </Link>
             </li>
             <li>
@@ -48,7 +66,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isSeniorMode }
             <li>
               <Link to="/dashboard" className="flex items-center p-3 hover:bg-gov-neutrals-gray100 rounded-lg" onClick={onClose}>
                 <User size={isSeniorMode ? 24 : 20} className="mr-3 text-gov-green" />
-                <span>My Dashboard</span>
+                <span>Citizen Dashboard</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/support" className="flex items-center p-3 hover:bg-gov-neutrals-gray100 rounded-lg" onClick={onClose}>
+                <MessageSquare size={isSeniorMode ? 24 : 20} className="mr-3 text-gov-green" />
+                <span>Support & Feedback</span>
               </Link>
             </li>
           </ul>

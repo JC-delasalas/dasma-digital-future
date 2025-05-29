@@ -11,6 +11,10 @@ import Transparency from "./pages/Transparency";
 import NotFound from "./pages/NotFound";
 import Services from "./pages/Services";
 import ServiceDetails from "./pages/ServiceDetails";
+import News from "./pages/News";
+import Programs from "./pages/Programs";
+import Directory from "./pages/Directory";
+import Support from "./pages/Support";
 import ChatAssistant from "./components/transparency/ChatAssistant";
 
 const queryClient = new QueryClient();
@@ -26,10 +30,14 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/transparency" element={<Transparency />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:categoryId/:serviceId" element={<ServiceDetails />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/programs" element={<Programs />} />
+            <Route path="/directory" element={<Directory />} />
+            <Route path="/transparency" element={<Transparency />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/support" element={<Support />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

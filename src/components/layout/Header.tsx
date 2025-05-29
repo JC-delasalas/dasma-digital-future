@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Bell, Calendar, Home, Menu, Search, Settings, User } from "lucide-react";
+import { Bell, Calendar, Home, Menu, Search, Settings, User, FileText, Users, Phone, MessageSquare } from "lucide-react";
 import { Link } from 'react-router-dom';
 import SeniorModeToggle from '../accessibility/SeniorModeToggle';
 import TextToSpeech from '../accessibility/TextToSpeech';
@@ -43,7 +43,25 @@ const Header: React.FC<HeaderProps> = ({
                 <li>
                   <Link to="/services" className="px-2 xl:px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
                     <Calendar size={isSeniorMode ? 20 : 16} className="mr-1 xl:mr-2" />
-                    <span className="hidden xl:inline">Services</span>
+                    <span className="hidden xl:inline">E-Services</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/news" className="px-2 xl:px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
+                    <FileText size={isSeniorMode ? 20 : 16} className="mr-1 xl:mr-2" />
+                    <span className="hidden xl:inline">News</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/programs" className="px-2 xl:px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
+                    <Users size={isSeniorMode ? 20 : 16} className="mr-1 xl:mr-2" />
+                    <span className="hidden xl:inline">Programs</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/directory" className="px-2 xl:px-3 py-2 rounded-md hover:bg-gov-neutrals-gray100 text-gov-neutrals-gray700 hover:text-gov-green transition-colors flex items-center">
+                    <Phone size={isSeniorMode ? 20 : 16} className="mr-1 xl:mr-2" />
+                    <span className="hidden xl:inline">Directory</span>
                   </Link>
                 </li>
                 <li>
