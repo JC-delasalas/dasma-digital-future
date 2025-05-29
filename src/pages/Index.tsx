@@ -29,7 +29,7 @@ const Index = () => {
   };
 
   return (
-    <div className={isSeniorMode ? 'senior-mode' : ''}>
+    <div className={`min-h-screen ${isSeniorMode ? 'senior-mode' : ''}`}>
       <Header 
         isSeniorMode={isSeniorMode} 
         toggleSeniorMode={toggleSeniorMode}
@@ -44,13 +44,16 @@ const Index = () => {
         isSeniorMode={isSeniorMode} 
       />
       
-      <main>
+      <main className="relative">
         <Hero isSeniorMode={isSeniorMode} />
-        <ServiceHighlights isSeniorMode={isSeniorMode} />
-        <TransparencySection isSeniorMode={isSeniorMode} />
-        <CitizenDashboardPreview isSeniorMode={isSeniorMode} />
-        <AccessibilityFeatures isSeniorMode={isSeniorMode} />
-        <CallToAction isSeniorMode={isSeniorMode} />
+        
+        <div className="space-y-0">
+          <ServiceHighlights isSeniorMode={isSeniorMode} />
+          <TransparencySection isSeniorMode={isSeniorMode} />
+          <CitizenDashboardPreview isSeniorMode={isSeniorMode} />
+          <AccessibilityFeatures isSeniorMode={isSeniorMode} />
+          <CallToAction isSeniorMode={isSeniorMode} />
+        </div>
       </main>
       
       <Footer isSeniorMode={isSeniorMode} />
