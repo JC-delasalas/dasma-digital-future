@@ -16,8 +16,9 @@ const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleSeniorMode = () => {
-    setIsSeniorMode(!isSeniorMode);
-    document.body.classList.toggle('senior-mode', !isSeniorMode);
+    const newSeniorMode = !isSeniorMode;
+    setIsSeniorMode(newSeniorMode);
+    document.body.classList.toggle('senior-mode', newSeniorMode);
   };
 
   const toggleSpeech = () => {
@@ -29,7 +30,7 @@ const Index = () => {
   };
 
   return (
-    <div className={`min-h-screen ${isSeniorMode ? 'senior-mode' : ''}`}>
+    <div className={`min-h-screen transition-all duration-300 ${isSeniorMode ? 'senior-mode' : ''}`}>
       <Header 
         isSeniorMode={isSeniorMode} 
         toggleSeniorMode={toggleSeniorMode}
@@ -41,7 +42,10 @@ const Index = () => {
       <MobileMenu 
         isOpen={mobileMenuOpen} 
         onClose={() => setMobileMenuOpen(false)} 
-        isSeniorMode={isSeniorMode} 
+        isSeniorMode={isSeniorMode}
+        toggleSeniorMode={toggleSeniorMode}
+        isSpeechActive={isSpeechActive}
+        toggleSpeech={toggleSpeech}
       />
       
       <main className="relative">

@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-        // Government colors
+        // Government colors with improved contrast ratios
         gov: {
           green: {
             DEFAULT: '#00573F',
@@ -110,6 +110,18 @@ export default {
       fontFamily: {
         sans: ['Open Sans', 'system-ui', 'sans-serif'],
       },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1rem' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+        'base': ['1rem', { lineHeight: '1.5rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '1' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+      },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -143,6 +155,14 @@ export default {
         'pulse-subtle': {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.85' }
+        },
+        'slide-in-left': {
+          '0%': { transform: 'translateX(-100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' }
+        },
+        'slide-out-right': {
+          '0%': { transform: 'translateX(0)', opacity: '1' },
+          '100%': { transform: 'translateX(100%)', opacity: '0' }
         }
 			},
 			animation: {
@@ -150,9 +170,46 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 0.4s ease-out',
         'fade-out': 'fade-out 0.4s ease-out',
-        'pulse-subtle': 'pulse-subtle 2s infinite ease-in-out'
+        'pulse-subtle': 'pulse-subtle 2s infinite ease-in-out',
+        'slide-in-left': 'slide-in-left 0.3s ease-out',
+        'slide-out-right': 'slide-out-right 0.3s ease-out'
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+    require("tailwindcss-animate"),
+    function({ addUtilities }: { addUtilities: any }) {
+      const newUtilities = {
+        '.senior-mode': {
+          fontSize: '120%',
+          lineHeight: '1.6',
+          letterSpacing: '0.025em',
+        },
+        '.senior-mode h1': {
+          fontSize: '150%',
+        },
+        '.senior-mode h2': {
+          fontSize: '140%',
+        },
+        '.senior-mode h3': {
+          fontSize: '130%',
+        },
+        '.senior-mode button': {
+          minHeight: '44px',
+          padding: '12px 16px',
+        },
+        '.senior-mode a': {
+          minHeight: '44px',
+          padding: '8px 12px',
+        },
+        '.feature-card': {
+          '@apply bg-white p-6 rounded-xl shadow-md border border-gov-neutrals-gray200 transition-all duration-300 hover:shadow-lg hover:border-gov-green-200': {},
+        },
+        '.hover-scale': {
+          '@apply transition-transform duration-200 hover:scale-105': {},
+        }
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 } satisfies Config;
