@@ -20,7 +20,7 @@
     --primary-foreground: 210 40% 98%;
 
     --secondary: 42 100% 50%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 0 0% 0%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -61,7 +61,7 @@
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 42 100% 50%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 0 0% 0%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
@@ -180,6 +180,39 @@
     --foreground: 0 0% 0%;
     --background: 0 0% 100%;
   }
+
+  /* Ensure proper contrast for yellow buttons */
+  .bg-gov-yellow {
+    color: black !important;
+  }
+
+  .bg-gov-yellow-50 {
+    color: black !important;
+  }
+
+  .bg-gov-yellow-100 {
+    color: black !important;
+  }
+
+  .bg-gov-yellow-200 {
+    color: black !important;
+  }
+
+  .bg-gov-yellow-300 {
+    color: black !important;
+  }
+
+  .bg-gov-yellow-400 {
+    color: black !important;
+  }
+
+  .bg-gov-yellow-500 {
+    color: black !important;
+  }
+
+  .bg-gov-yellow-600 {
+    color: white !important;
+  }
 }
 
 @layer components {
@@ -200,7 +233,7 @@
   }
   
   .btn-secondary {
-    @apply bg-gov-yellow hover:bg-gov-yellow-600 text-gov-neutrals-gray900 px-6 py-3 rounded-lg font-medium transition-colors;
+    @apply bg-gov-yellow hover:bg-gov-yellow-600 text-black px-6 py-3 rounded-lg font-medium transition-colors;
   }
   
   .btn-outline {
@@ -220,6 +253,6 @@
   }
   
   .badge-secondary {
-    @apply bg-gov-yellow-50 text-gov-yellow-700;
+    @apply bg-gov-yellow-50 text-black;
   }
 }

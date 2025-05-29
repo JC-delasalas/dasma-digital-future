@@ -24,7 +24,7 @@ const CallToAction: React.FC<CallToActionProps> = ({ isSeniorMode }) => {
               <Button 
                 variant="default" 
                 size={isSeniorMode ? "lg" : "default"}
-                className="bg-gov-yellow hover:bg-gov-yellow-600 text-gov-neutrals-gray900 sm:mr-4"
+                className="bg-gov-yellow hover:bg-gov-yellow-600 text-black font-semibold sm:mr-4"
               >
                 Create Citizen Account
               </Button>
@@ -33,7 +33,7 @@ const CallToAction: React.FC<CallToActionProps> = ({ isSeniorMode }) => {
               <Button 
                 variant="outline" 
                 size={isSeniorMode ? "lg" : "default"}
-                className="bg-transparent border-white text-white hover:bg-white/10"
+                className="bg-transparent border-white text-white hover:bg-white hover:text-black font-semibold transition-all duration-300"
               >
                 Explore Services
               </Button>

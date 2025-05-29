@@ -46,13 +46,13 @@ const Hero: React.FC<HeroProps> = ({ isSeniorMode }) => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size={isSeniorMode ? "lg" : "default"}
-                className={`bg-gov-yellow hover:bg-gov-yellow-600 text-gov-neutrals-gray900 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ${
+                className={`bg-gov-yellow hover:bg-gov-yellow-600 text-black font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ${
                   isSeniorMode ? 'text-xl py-4 px-8' : 'text-lg py-3 px-6'
                 }`}
               >
-                <Calendar className="mr-2 h-5 w-5" />
+                <Calendar className="mr-2 h-5 w-5 text-black" />
                 Access Services
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 text-black" />
               </Button>
               <Link to="/dashboard">
                 <Button
@@ -90,7 +90,7 @@ const Hero: React.FC<HeroProps> = ({ isSeniorMode }) => {
             <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/20">
               <div className="space-y-6">
                 <div>
-                  <h2 className={`font-bold text-gov-neutrals-gray900 mb-2 ${
+                  <h2 className={`font-bold text-black mb-2 ${
                     isSeniorMode ? 'text-2xl' : 'text-xl'
                   }`}>
                     Quick Services
@@ -105,7 +105,7 @@ const Hero: React.FC<HeroProps> = ({ isSeniorMode }) => {
                   <input
                     type="text"
                     placeholder="Search services, forms, information..."
-                    className={`w-full border-2 border-gov-neutrals-gray200 rounded-xl px-4 pr-12 focus:outline-none focus:ring-2 focus:ring-gov-green focus:border-transparent transition-all ${
+                    className={`w-full border-2 border-gov-neutrals-gray200 rounded-xl px-4 pr-12 focus:outline-none focus:ring-2 focus:ring-gov-green focus:border-transparent transition-all text-black ${
                       isSeniorMode ? 'text-lg py-4' : 'text-base py-3'
                     }`}
                   />
@@ -130,7 +130,7 @@ const Hero: React.FC<HeroProps> = ({ isSeniorMode }) => {
                     ].map((service, index) => (
                       <button
                         key={index}
-                        className="bg-gov-neutrals-gray50 hover:bg-gov-green-50 hover:text-gov-green text-gov-neutrals-gray700 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:shadow-md text-left"
+                        className="bg-gov-neutrals-gray50 hover:bg-gov-green-50 hover:text-gov-green text-black px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:shadow-md text-left"
                       >
                         {service}
                       </button>

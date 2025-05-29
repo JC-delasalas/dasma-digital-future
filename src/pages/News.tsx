@@ -39,7 +39,10 @@ const News = () => {
       <MobileMenu 
         isOpen={mobileMenuOpen} 
         onClose={() => setMobileMenuOpen(false)} 
-        isSeniorMode={isSeniorMode} 
+        isSeniorMode={isSeniorMode}
+        toggleSeniorMode={toggleSeniorMode}
+        isSpeechActive={isSpeechActive}
+        toggleSpeech={toggleSpeech}
       />
       
       <main>
