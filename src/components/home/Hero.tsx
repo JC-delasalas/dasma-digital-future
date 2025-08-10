@@ -56,9 +56,8 @@ const Hero: React.FC<HeroProps> = ({ isSeniorMode }) => {
               </Button>
               <Link to="/dashboard">
                 <Button
-                  variant="outline"
                   size={isSeniorMode ? "lg" : "default"}
-                  className={`border-2 border-white text-white hover:bg-white hover:text-gov-green font-semibold transition-all duration-300 ${
+                  className={`bg-white text-gov-green hover:bg-gov-neutrals-gray100 font-semibold transition-all duration-300 ${
                     isSeniorMode ? 'text-xl py-4 px-8' : 'text-lg py-3 px-6'
                   }`}
                 >
